@@ -1,6 +1,6 @@
 import { connect } from 'trilogy'
 
-const db = connect('./file.sqlite', {
+const db = connect(`${process.cwd()}/bd/file.sqlite`, {
     client: 'sql.js'
 })
 
