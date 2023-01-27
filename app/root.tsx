@@ -7,15 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
-import { getCssText } from "./config/stitcjes.config";
-
-export const loader: LoaderFunction = async () => {
-  return new Response(getCssText(), {
-    headers: { 'Content-Type': 'text/css; charset=UTF-8' },
-  })
-}
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -27,15 +19,12 @@ export const handle = {
   breadcrumb: () => <Link to="/quotes/">Home</Link>
 }
 
-export default function App() {
-  const styles = useLoaderData()
-  
+export default function App() { 
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
-        <style id="stitches">{styles}</style>
       </head>
       <body>
         <Outlet />
