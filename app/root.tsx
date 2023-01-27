@@ -1,6 +1,5 @@
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/node";
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -9,17 +8,17 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import { globalStyles } from "./config/stitcjes.config";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Remix CRUD with Supabase",
   viewport: "width=device-width,initial-scale=1",
 });
 
-export const handle = {
-  breadcrumb: () => <Link to="/quotes/">Home</Link>
-}
-
 export default function App() { 
+  globalStyles()
+
   return (
     <html lang="en">
       <head>
