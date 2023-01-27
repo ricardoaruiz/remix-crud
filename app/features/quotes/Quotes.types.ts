@@ -6,6 +6,7 @@ export namespace QuoteModel {
     id: string;
     quote: string;
     author: string;
+    create_at?: string;
   }
 }
 

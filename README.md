@@ -32,3 +32,16 @@ npm run dev
 Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
 
 If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+
+```sh
+npm run supabase:gentypes
+```
+
+This command generate all type definition of supabase
+It is necessary to install globally [Supabase CLI](https://supabase.com/docs/guides/cli), after do login in supabase.
+This [tutorial](https://egghead.io/lessons/supabase-generate-typescript-type-definitions-with-the-supabase-cli?utm_source=rss&utm_medium=feed&utm_campaign=rss_feed) shows how to do 
+
+```sh
+supapbase login
+```
+Inform the token

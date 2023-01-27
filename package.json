@@ -4,6 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
+    "supabase:gentypes": "supabase gen types typescript --project-id twvsmlxidzlvwitiivzc > ./app/lib/db.types.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
