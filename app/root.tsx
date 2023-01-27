@@ -8,7 +8,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { getCssText } from "./config/stitcjes.config";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -26,7 +25,6 @@ export default function App() {
       <head>
         <Meta />
         <Links />
-        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </head>
       <body>
         <Outlet />
