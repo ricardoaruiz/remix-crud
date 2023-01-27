@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -7,7 +7,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { getCssText } from "./config/stitcjes.config";
+
+export const loader: LoaderFunction = async () => {
+  return new Response(getCssText(), {
+    headers: { 'Content-Type': 'text/css; charset=UTF-8' },
+  })
+}
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -20,11 +28,14 @@ export const handle = {
 }
 
 export default function App() {
+  const styles = useLoaderData()
+  
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
+        <style id="stitches">{styles}</style>
       </head>
       <body>
         <Outlet />
