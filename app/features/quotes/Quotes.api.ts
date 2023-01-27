@@ -54,3 +54,5 @@ export const remove = async(id: string, delay?: number): Promise<void> => {
   await supabase.from('quote').delete().eq('id', id)
 }
 
+
+
