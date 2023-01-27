@@ -42,7 +42,7 @@ export const action: ActionFunction = async ({ request, params }) => {
 
   if (parsedQuote.success) {
     await QuotesApi.update({ id, ...quoteFormData }, 1000)
-    return redirect('/')
+    return redirect('/quotes')
   }
 
   return json<ActionData>({

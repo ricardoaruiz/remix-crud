@@ -7,7 +7,7 @@ import type { QuoteModel } from "./Quotes.types"
  * @returns list of all quotes
  */
 export const findAll = async (delay?: number): Promise<QuoteModel.Quote[]> => {  
-  const { data } = await supabase.from('quote').select('*')
+  const { data } = await supabase.from('quote').select('*').order('create_at', { ascending: true })
   const quotes = data as QuoteModel.Quote[]
 
   return quotes
