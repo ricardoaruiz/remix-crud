@@ -13,12 +13,11 @@ export const QuoteItem = ({ data: { id, quote, author } }: QuoteItemProps) => {
   const processedId = transition.submission?.formData.get('quoteId')?.toString() || '0'
   const isRemoving = transition.submission?.method === 'DELETE'
 
-  const deleteButtonLabel = useMemo(() => id === Number(processedId) && isRemoving ? 'Removing...' : 'Remove',[id, isRemoving, processedId])
+  const deleteButtonLabel = useMemo(() => id === processedId && isRemoving ? 'Removing...' : 'Remove',[id, isRemoving, processedId])
 
   return (
     <S.QuoteItem>
       <Link to={`/quotes/edit/${id}`} prefetch='intent'>
-        <div>#{id}</div>
         <div>{quote}</div>
         <div>{author}</div>
       </Link>

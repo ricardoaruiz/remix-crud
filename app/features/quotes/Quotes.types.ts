@@ -3,7 +3,7 @@ import {z} from 'zod'
 
 export namespace QuoteModel {
   export type Quote = {
-    id: number;
+    id: string;
     quote: string;
     author: string;
   }

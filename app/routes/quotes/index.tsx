@@ -55,7 +55,7 @@ export const action: ActionFunction = async ({ request }) => {
   if (request.method === 'DELETE') {
     const formData = await request.formData()
 
-    const id  = Number(formData.get('quoteId')?.toString() || 0)
+    const id  = formData.get('quoteId')?.toString() || '0'
     await QuotesApi.remove(id, 1000)
 
     return null

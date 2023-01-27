@@ -6,7 +6,7 @@ const db = connect(`${process.cwd()}/bd/file.sqlite`, {
 
 export const getModels = async () => {
     const Quote = await db.model('quote', {
-        id: 'increments',
+        id: String,
         quote: String,
         author: String,
     })

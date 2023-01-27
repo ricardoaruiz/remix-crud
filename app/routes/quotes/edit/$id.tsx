@@ -5,7 +5,7 @@ import { QuotesTypes, QuoteForm, QuotesApi } from "~/features/quotes"
 
 // Loader function return type
 type LoaderData = {
-  quote: QuotesTypes.QuoteModel.Quote
+  quote: QuotesTypes.QuoteModel.Quote | null
 }
 
 // Action function return type
@@ -21,7 +21,7 @@ type ActionData = {
  */
 export const loader: LoaderFunction = async ({ params }) => {
     const { id } = params
-    const quote = await QuotesApi.findOne(Number(id))
+    const quote = await QuotesApi.findOne(id)
     return json<LoaderData>({ quote })
 }
 
@@ -33,7 +33,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 export const action: ActionFunction = async ({ request, params }) => {
   const formData = await request.formData()
 
-  const id = Number(params.id || 0)
+  const id = params.id || '0'
   const quoteFormData = {
     quote : formData.get('quote')?.toString() || '',
     author: formData.get('author')?.toString() || ''
@@ -70,7 +70,7 @@ export default function() {
     <>
       <Link to="/quotes">Voltar</Link>
       <QuoteForm
-        title={`Edit Quote #${loaderData.quote.id}`}
+        title={`Edit Quote #${loaderData.quote?.id}`}
         data={quote}
         errors={actionData?.errors}
       />

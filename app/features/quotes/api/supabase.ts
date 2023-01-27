@@ -1,13 +1,15 @@
 import invariant from "tiny-invariant";
-import { getApi } from "./api/api-facotry";
-import type { QuoteModel } from "./Quotes.types"
+import { supabase } from "~/lib/supabase.server"; 
+import type { QuoteModel } from "../Quotes.types"
 
 /**
  * Return all quotes from DB
  * @returns list of all quotes
  */
-export const findAll = async (delay?: number): Promise<QuoteModel.Quote[]> => {
-  const quotes = await getApi().findAll(delay)
+export const findAll = async (delay?: number): Promise<QuoteModel.Quote[]> => {  
+  const { data } = await supabase.from('quote').select('*')
+  const quotes = data as QuoteModel.Quote[]
+
   return quotes
 }
 
@@ -18,7 +20,10 @@ export const findAll = async (delay?: number): Promise<QuoteModel.Quote[]> => {
  */
 export const findOne = async (id?: string, delay?: number): Promise<QuoteModel.Quote | null> => {
   invariant(id, 'Please provide an id as string')
-  const quote = await getApi().findOne(id, delay)
+
+  const { data } = await supabase.from('quote').select('*').eq('id', id)
+  const quote = data?.length ? data[0] as QuoteModel.Quote : null
+
   return quote
 }
 
@@ -27,7 +32,8 @@ export const findOne = async (id?: string, delay?: number): Promise<QuoteModel.Q
  * @param quote new quote
  */
 export const create = async (quote: Omit<QuoteModel.Quote, 'id'>, delay?: number): Promise<void> => {
-  await getApi().create(quote, delay)
+  
+  await supabase.from('quote').insert(quote)
 }
 
 /**
@@ -35,7 +41,8 @@ export const create = async (quote: Omit<QuoteModel.Quote, 'id'>, delay?: number
  * @param quote changed quote
  */
 export const update = async(quote: QuoteModel.Quote, delay?: number): Promise<void> => {
-  await getApi().update(quote, delay)
+  
+  await supabase.from('quote').update(quote).eq('id', quote.id)
 }
 
 /**
@@ -43,6 +50,7 @@ export const update = async(quote: QuoteModel.Quote, delay?: number): Promise<vo
  * @param quote remove quote
  */
 export const remove = async(id: string, delay?: number): Promise<void> => {
-  await getApi().remove(id, delay)
+ 
+  await supabase.from('quote').delete().eq('id', id)
 }
 

@@ -6,7 +6,7 @@ import * as S from './styles'
 
 type QuoteFormProps = {
   title?: string;
-  data?: Omit<QuotesTypes.QuoteModel.Quote, 'id'> & { id?: number };
+  data?: Omit<QuotesTypes.QuoteModel.Quote, 'id'> & { id?: string } | null;
   errors?:QuotesTypes.QuoteView.QuoteErrors;
 }
 
