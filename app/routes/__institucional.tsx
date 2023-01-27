@@ -1,17 +1,20 @@
 import { NavLink, Outlet } from "@remix-run/react";
 
-import { styled } from "~/config/stitcjes.config";
+import { styled } from "~/config/stitches.config";
 
 const Header = styled('header', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   backgroundColor: 'LightSalmon',
-  padding: '20px'
+  padding: '20px',
+  boxShadow: '6px 4px 6px rgba(0,0,0,0.2)'
 })
 
 const Title = styled('h1', {
-  fontSize: '1.5rem'
+  fontSize: '1.8rem',
+  fontWeight: 700,
+  color: 'white'
 })
 
 const Menu = styled('ul', {
@@ -28,15 +31,15 @@ const MenuItem = styled('li', {
     fontSize: '1.3rem',
     padding: '10px 15px',
     borderRadius: '4px',
+    color: 'white',
 
     '&:hover': {
       backgroundColor: 'lightBlue',
-      color: 'white'
+      color: 'black',
     }
   },
   '.active': {
     backgroundColor: 'blue',
-    color: 'white'
   }
 })
 

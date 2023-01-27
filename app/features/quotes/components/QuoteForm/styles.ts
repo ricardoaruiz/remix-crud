@@ -1,4 +1,4 @@
-import { styled } from "~/config/stitcjes.config";
+import { styled } from "~/config/stitches.config";
 import { Form as RemixForm } from '@remix-run/react'
 
 export const FormContainer = styled('div', {

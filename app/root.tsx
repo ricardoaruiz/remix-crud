@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import { globalStyles } from "./config/stitcjes.config";
+import { globalStyles } from "./config/stitches.config";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",

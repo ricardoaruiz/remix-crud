@@ -1,4 +1,4 @@
-import { styled } from "~/config/stitcjes.config";
+import { styled } from "~/config/stitches.config";
 
 export const QuoteItem = styled('li', {
   display: 'flex',

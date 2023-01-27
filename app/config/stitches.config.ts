@@ -10,10 +10,19 @@ const stitches = createStitches({
 });
 
 export const globalStyles = stitches.globalCss({
+  '@import': [
+    "url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap')"
+  ],
+  '@font-face': {
+    fontFamily: 'Roboto, sans-serif'
+  },
   '*': { 
     margin: 0, 
     padding: 0 
   },
+  body: {
+    fontFamily: 'Roboto, sans-serif'
+  }
 });
 
 export const {
